@@ -5,9 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password
       t.string :name
       t.integer :point
-      t.integer :pushup_count
-      t.integer :situp_count
-      t.integer :squat_count
     end
+    add_index :users, :login_id, unique: true
   end
 end

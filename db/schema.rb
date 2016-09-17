@@ -10,16 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160917033846) do
+ActiveRecord::Schema.define(version: 20160917082116) do
+
+  create_table "prizes", force: :cascade do |t|
+    t.string  "name"
+    t.string  "description"
+    t.integer "point"
+    t.string  "image_url"
+  end
+
+  create_table "training_histories", force: :cascade do |t|
+    t.string  "login_id"
+    t.string  "datetime"
+    t.string  "training_type"
+    t.integer "count"
+    t.index ["datetime"], name: "index_training_histories_on_datetime"
+    t.index ["login_id"], name: "index_training_histories_on_login_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string  "login_id"
     t.string  "password"
     t.string  "name"
-    t.integer "point",        default: 0
-    t.integer "pushup_count", default: 0
-    t.integer "situp_count",  default: 0
-    t.integer "squat_count",  default: 0
+    t.integer "point",    default: 0
     t.index ["login_id"], name: "index_users_on_login_id", unique: true
   end
 
