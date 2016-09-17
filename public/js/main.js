@@ -43,7 +43,7 @@ function getCount() {
 	    document.getElementById("remaining_count").innerHTML = remainingCount;
 	    if (remainingCount <= 0) {
 		var msg = "目標回数に到達しました。\n" + obtained_point +" ポイントが加算されます。"
-		+ "<a href=\"/prizes\">ポイント交換</a>";
+		    + "<a href=\"/prizes\">ポイント交換</a>";
 		document.getElementById("result_message").innerHTML = msg;
 		clearInterval(intervalFunctionId);
 	    }
