@@ -12,8 +12,15 @@ require './models/training_history'
 set :bind, '0.0.0.0'
 set :database, {adapter: 'sqlite3', database: 'database.db'}
 
+DEMO_LOGIN_ID = 'muscle808'
+
 get '/' do
+  @current_user = User.find_by(login_id: DEMO_LOGIN_ID)
   erb :index
+end
+
+get '/test' do
+  erb :test
 end
 
 # POST: login_id, name, password
@@ -71,6 +78,7 @@ get '/start/:login_id' do |login_id|
     ret = { success: false, message: e.message }.to_json
   end
 
+  @current_user = User.find_by(login_id: login_id)
   erb :training
 end
 
@@ -108,6 +116,7 @@ get '/prizes' do
     ret = { success: false, message: e.message }.to_json
   end
 
+  @current_user = User.find_by(login_id: DEMO_LOGIN_ID)
   erb :prizes
 end
 

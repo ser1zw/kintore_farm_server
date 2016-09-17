@@ -5,10 +5,10 @@
     <script type="text/javascript">
       var login_id = "<%= @login_id %>";
     </script>
-    <script type="text/javascript" src="/js/jquery-3.1.0.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
+    <%= erb :common_js_css %>
   </head>
   <body>
+    <%= erb :header %>
     <% @prizes.each do |prize| %>
       <div id="prize-<%= prize.id %>" style="border:#000000 solid 1px; margin: 5px;" onclick="getPrize(<%= prize.id %>)">
 	<h3><%= prize.name %></h3>

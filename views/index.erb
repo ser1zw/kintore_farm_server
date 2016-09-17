@@ -1,34 +1,46 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <%= erb :common_js_css %>
     <title>Admin</title>
-    <script type="text/javascript" src="/js/jquery-3.1.0.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
   </head>
   <body>
-    <h1>Count Up</h1>
+    <%= erb :header %>
+    <div class="container">
+      <div class="page-header">
+	<h1>Count Up</h1>
 
-    <a href="/prizes" target="_blank">Open prize page</a>
-    <input type="submit" value="Open training page" onclick="openTrainingPage()">
-    <input type="submit" value="Count UP" onclick="countUp()">
-    <hr>
-    <h1>Signup</h1>
-    <form action="/signup" method="post">
-      login_id <input type="text" name="login_id">
-      <br>
-      name <input type="text" name="name">
-      <br>
-      password <input type="password" name="password">
-      <br>
-      <input type="submit" value="signup">
-    </form>
+	<a href="/prizes" target="_blank">Open prize page</a>
+	<input type="submit" value="Open training page" onclick="openTrainingPage()">
+	<input type="submit" value="Count UP" onclick="countUp()">
+	<hr>
 
-    <h1>Login</h1>
-    <form action="/login" method="post">
-      login_id <input type="text" name="login_id">
-      <br>
-      password <input type="password" name="password">
-      <br>
-      <input type="submit" value="Login">
-    </form>
+	<h1>Signup</h1>
+	<form action="/signup" method="post">
+	  login_id <input type="text" name="login_id">
+	  <br>
+	  name <input type="text" name="name">
+	  <br>
+	  password <input type="password" name="password">
+	  <br>
+	  <input type="submit" value="signup">
+	</form>
+
+	<h1>Login</h1>
+	<form action="/login" method="post">
+	  login_id <input type="text" name="login_id">
+	  <br>
+	  password <input type="password" name="password">
+	  <br>
+	  <input type="submit" value="Login">
+	</form>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </footer>
   </body>
 </html>
