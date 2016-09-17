@@ -37,12 +37,15 @@ function getCount() {
     }).done(function(msg) {
 	ret = JSON.parse(msg);
 	if (ret && ret.count) {
-	    document.getElementById("training_count").innerHTML = ret.count
-	    document.title = ret.count
-	    var remainingCount = target_count - ret.count;
+	    // document.getElementById("training_count").innerHTML = ret.count
+	    document.title = ret.count;
+	    remainingCount = targetCount - ret.count;
+	    if (remainingCount < 0) {
+		remainingCount = 0;
+	    }
 	    document.getElementById("remaining_count").innerHTML = remainingCount;
 	    if (remainingCount <= 0) {
-		var msg = "目標回数に到達しました。\n" + obtained_point +" ポイントが加算されます。"
+		var msg = "目標回数に到達しました。\n" + obtainedPoint +" ポイントが加算されます。"
 		    + "<a href=\"/prizes\">ポイント交換</a>";
 		document.getElementById("result_message").innerHTML = msg;
 		clearInterval(intervalFunctionId);

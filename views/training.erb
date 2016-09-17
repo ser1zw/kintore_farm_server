@@ -5,18 +5,21 @@
     <script type="text/javascript">
       var datetime = "<%= @datetime %>";
       var login_id = "<%= @login_id %>";
-      var target_count = <%= @target_count %>;
-      var obtained_point = <%= @obtained_point %>;
+      var targetCount = <%= @target_count %>;
+      var remainingCount = <%= @target_count %>;
+      var obtainedPoint = <%= @obtained_point %>;
     </script>
     <%= erb :common_js_css %>
   </head>
   <body onload="init()">
     <%= erb :header %>
-    <h1>筋トレ画面</h1>
-    <div id="result_message"></div>
-    <font size="7">
-      <span id="training_count">0</span> 回
-      あと <span id="remaining_count"><%= @target_count %></span> 回
-    </font>
+    <div style="text-align: center;">
+      <span id="training_label">JUMPING SQUATS</span>
+      <div id="result_message"></div>
+      <div id="remaining_count_box">
+	残り<span id="remaining_count" class="training_count"><%= @target_count %></span>回
+      </div>
+      <img src="/images/training.png">
+    </div>
   </body>
 </html>

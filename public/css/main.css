@@ -1,7 +1,35 @@
 body {
-  padding-top: 50px;
+    padding-top: 50px;
 }
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
+/*
+#training {
+    background-image: url(/images/training.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-color: #ffffff;
+}
+*/
+.navbar-default {
+    background-color: #ff4000;
+    border-color: #440000;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-brand {
+    color: #ffffff;
+}
+
+.training_count {
+    font-size: 200px;
+}
+#remaining_count_box {
+    font-size: 50px;
+}
+#training_label {
+    font-size: 80px;
 }
