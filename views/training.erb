@@ -5,14 +5,18 @@
     <script type="text/javascript">
       var datetime = "<%= @datetime %>";
       var login_id = "<%= @login_id %>";
+      var target_count = <%= @target_count %>;
+      var obtained_point = <%= @obtained_point %>;
     </script>
     <script type="text/javascript" src="/js/jquery-3.1.0.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
   </head>
   <body onload="init()">
     <h1>筋トレ画面</h1>
+    <div id="result_message"></div>
     <font size="7">
       <span id="training_count">0</span> 回
+      あと <span id="remaining_count"><%= @target_count %></span> 回
     </font>
   </body>
 </html>

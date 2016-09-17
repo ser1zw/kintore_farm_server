@@ -65,6 +65,8 @@ get '/start/:login_id' do |login_id|
   begin
     @login_id = login_id
     @datetime = params['dt']
+    @target_count = 10
+    @obtained_point = 100
   rescue => e
     ret = { success: false, message: e.message }.to_json
   end
@@ -101,27 +103,29 @@ end
 get '/prizes' do
   ret = nil
   begin
-    prizes = Prize.all
-    ret = { success: true, prizes: prizes }.to_json
+    @prizes = Prize.all
   rescue => e
     ret = { success: false, message: e.message }.to_json
   end
 
-  ret
+  erb :prizes
 end
 
 # POST params = { 'login_id': muscle808, 'prize_id' = 1 }
 post '/getprize' do
   begin
-    user = User.find_by(login_id: params['login_id'])
-    prize = Prize.find(id: params['prize_id'])
+    json = JSON.parse(request.body.read)
+    user = User.find_by(login_id: json['login_id'])
+    prize = Prize.find_by(id: json['prize_id'].to_i)
 
     if user.point >= prize.point
+      user.point -= prize.point
       ret = {
         success: true,
-        message: "#{prize.name} を配送しました。"
+        message: "#{prize.name} を配送しました。",
+        user_point: user.point
       }.to_json
-      user.point -= prize.point
+      user.save
     else
       ret = {
         success: false,
