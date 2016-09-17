@@ -3,6 +3,7 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'pp'
 require 'json'
+require 'date'
 
 require './models/user'
 require './models/prize'
@@ -132,4 +133,14 @@ post '/getprize' do
   end
 
   ret
+end
+
+post '/countup/:login_id' do |login_id|
+  dt = params['dt']
+  TrainingHistory.create(
+    login_id: login_id,
+    datetime: dt,
+    training_type: 'squat',
+    count: 1
+  )
 end
