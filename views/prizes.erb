@@ -9,14 +9,21 @@
   </head>
   <body>
     <%= erb :header %>
-    <% @prizes.each do |prize| %>
-      <div id="prize-<%= prize.id %>" style="border:#000000 solid 1px; margin: 5px;" onclick="getPrize(<%= prize.id %>)">
-	<h3><%= prize.name %></h3>
-	<img src="<%= prize.image_url %>" width="80">
-	<%= prize.description %>
-	<%= prize.point %> ポイント
-      </div>
-    <% end %>
+
+    <div class="container">
+      <% @prizes.each do |prize| %>
+	<section id="prize-<%= prize.id %>" class="card" onclick="getPrize(<%= prize.id %>)">
+	  <div style="text-align: center;">
+	    <img class="card-img" src="<%= prize.image_url %>">
+	  </div>
+	  <div class="card-content">
+	    <h1 class="card-title"><%= prize.name %></h1>
+	    <p class="card-text"><%= prize.description %></p>
+	    <p class="prize-price"><%= prize.point %> ポイント<p>
+	  </div>
+	</section>
+      <% end %>
+    </div>
   </body>
 </html>
 

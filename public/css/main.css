@@ -28,8 +28,41 @@ body {
     font-size: 200px;
 }
 #remaining_count_box {
-    font-size: 50px;
+    font-size: 30px;
 }
 #training_label {
-    font-size: 80px;
+    font-size: 45px;
+}
+
+.card {
+    width: 80%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #ccc;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-img {
+    border-radius: 5px 5px 0 0;
+    height: 120px;
+    max-width: 100%;
+    height: auto;
+}
+.card-content {
+    padding: 20px;
+}
+.card-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+.card-text {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.prize-price {
+    font-size: 25px;
 }
