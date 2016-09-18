@@ -13,30 +13,36 @@
     <%= erb :header %>
 
     <div class="container">
-      トレーニングの内容を設定します。
+      <h1>トレーニングの内容を設定してください。</h1>
       <form action="/register" method="post">
 	<div>
 	  <div>
-	    テレビ番組: <span id="registered_tv_program">未選択</span>
-	    <a href="/tvprograms">テレビ番組を選択</a>
+	    <h3>テレビ番組</h3>
+	    <a id="registered_tv_program" class="btn btn-default" href="/tvprograms">テレビ番組を選択してください。</a>
 	  </div>
 
-	  メニュー: <select name="training_type">
-	    <option value="pushup" <%= ((@current_user and @current_user.training_type == 'pushup') ? 'selected' : '') %> >腕立て伏せ</option>
-	    <option value="shitup" <%= ((@current_user and @current_user.training_type == 'shitup') ? 'selected' : '') %>>腹筋</option>
-	    <option value="default_squat" <%= ((@current_user and @current_user.training_type == 'default_squat') ? 'selected' : '') %>>スクワット</option>
-	    <option value="squat" <%= ((@current_user and @current_user.training_type == 'squat') ? 'selected' : '') %>>ジャンピングスクワット</option>
-	  </select>
+	  <div>
+	    <h3>トレーニングメニュー</h3>
+	    <div class="btn-group">
+	    <select name="training_type" class="btn btn-default">
+	      <option value="pushup" <%= ((@current_user and @current_user.training_type == 'pushup') ? 'selected' : '') %> >腕立て伏せ</option>
+	      <option value="shitup" <%= ((@current_user and @current_user.training_type == 'shitup') ? 'selected' : '') %>>腹筋</option>
+	      <option value="default_squat" <%= ((@current_user and @current_user.training_type == 'default_squat') ? 'selected' : '') %>>スクワット</option>
+	      <option value="squat" <%= ((@current_user and @current_user.training_type == 'squat') ? 'selected' : '') %>>ジャンピングスクワット</option>
+	    </select>
+	  </div>
 	</div>
 	<div>
-	  回数: <select name="training_count">
+	  <h3>回数</h3>
+	  <select name="training_count" class="btn btn-default">
 	    <option value="5" <%= ((@current_user and @current_user.training_count == 5) ? 'selected' : '') %>>5回</option>
 	    <option value="10" <%= ((@current_user and @current_user.training_count == 10) ? 'selected' : '') %>>10回</option>
 	    <option value="20" <%= ((@current_user and @current_user.training_count == 20) ? 'selected' : '') %>>20回</option>
 	    <option value="30" <%= ((@current_user and @current_user.training_count == 30) ? 'selected' : '') %>>30回</option>
 	  </select>
 	</div>
-	<input type="submit" value="設定">
+	<hr>
+	<input type="submit" value="設定" class="btn btn-warning">
       </form>
       <a href="#" onclick="goToTrainingPage()">トレーニングを始める</a>
     </div>
