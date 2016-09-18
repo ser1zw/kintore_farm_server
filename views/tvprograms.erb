@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TV Programs</title>
+    <%= erb :common_js_css %>
+  </head>
+  <body>
+    <%= erb :header %>
+
+    <div class="container">
+      <% @tv_programs.each do |tv| %>
+	<section id="prize-<%= tv.id %>" class="card" onclick="getPrize(<%= tv.id %>)">
+	  <div style="text-align: center;">
+	    <img class="card-img" src="<%= tv.image_url %>">
+	  </div>
+	  <div class="card-content">
+	    <h1 class="card-title"><%= tv.title %></h1>
+	    <p class="card-text"><%= tv.description %></p>
+	    <p class="prize-price"><%= tv.formatted_start_datetime %>〜<p>
+	  </div>
+	</section>
+      <% end %>
+    </div>
+  </body>
+</html>

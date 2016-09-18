@@ -8,6 +8,7 @@ require 'date'
 require './models/user'
 require './models/prize'
 require './models/training_history'
+require './models/tv_program'
 
 set :bind, '0.0.0.0'
 set :database, {adapter: 'sqlite3', database: 'database.db'}
@@ -106,6 +107,19 @@ get '/point/:login_id' do |login_id|
   end
 
   ret
+end
+
+get '/tvprograms' do
+  ret = nil
+  begin
+    @tv_programs = TvProgram.all
+  rescue => e
+    ret = { success: false, message: e.message }.to_json
+    @tv_programs = []
+  end
+
+  @current_user = User.find_by(login_id: DEMO_LOGIN_ID)
+  erb :tvprograms
 end
 
 get '/prizes' do
