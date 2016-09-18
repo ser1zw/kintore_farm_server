@@ -13,9 +13,9 @@
   </head>
   <body onload="init()">
     <%= erb :header %>
+    <div id="result_message"></div>
     <div class="container" style="text-align: center;">
       <span id="training_label">JUMPING SQUATS</span>
-      <div id="result_message"></div>
       <div id="remaining_count_box">
 	残り<span id="remaining_count" class="training_count"><%= @target_count %></span>回
       </div>

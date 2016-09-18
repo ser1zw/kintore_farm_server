@@ -69,3 +69,14 @@ body {
 .prize-price {
     font-size: 25px;
 }
+#result_message {
+    background: #ffefff;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #ccc;
+    margin-top: 5px;
+    margin-bottom: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+}

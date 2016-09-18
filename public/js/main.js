@@ -71,7 +71,7 @@ function getCount() {
 	    }
 	    document.getElementById("remaining_count").innerHTML = remainingCount;
 	    if (remainingCount <= 0) {
-		var msg = "目標回数に到達しました。\n" + obtainedPoint +" ポイントが加算されます。"
+		var msg = "目標回数を達成しました。\n" + obtainedPoint +" ポイントが加算されます。"
 		    + "<a href=\"/prizes\">ポイント交換</a>";
 		document.getElementById("result_message").innerHTML = msg;
 		var pt = parseInt(document.getElementById("current_point").innerHTML) + obtainedPoint;
