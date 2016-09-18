@@ -24,14 +24,15 @@ function getPrize(prize_id) {
 	data: JSON.stringify(json)
     }).done(function(msg) {
 	// console.log(msg);
-	var ret = JSON.parse(msg);
-	var message;
-	if (ret.success) {
-	    message = ret.message + "\n残り " + ret.user_point + " ポイント";
-	} else {
-	    message = ret.message;
-	}
-	alert(message);
+	location.href = "/result/" + prize_id;
+	// var ret = JSON.parse(msg);
+	// var message;
+	// if (ret.success) {
+	//     message = ret.message + "\n残り " + ret.user_point + " ポイント";
+	// } else {
+	//     message = ret.message;
+	// }
+	// alert(message);
     });
 }
 

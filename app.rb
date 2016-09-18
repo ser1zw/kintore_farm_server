@@ -230,3 +230,9 @@ post '/countup/:login_id' do |login_id|
     count: 1
   )
 end
+
+get '/result/:prize_id' do |prize_id|
+  @current_user = User.find_by(login_id: DEMO_LOGIN_ID)
+  @prize = Prize.find(prize_id.to_i)
+  erb :result
+end

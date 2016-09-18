@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+    </script>
+    <%= erb :common_js_css %>
+  </head>
+  <body>
+    <%= erb :header %>
+
+    <div class="container">
+      <p class="order_message"><%= @prize.name %>のご注文を承りました（残り <%= @current_user.point %> ポイント）。</p>
+      <section id="prize-<%= @prize.id %>" class="card">
+	<div style="text-align: center;">
+	  <img class="card-img" src="<%= @prize.image_url %>">
+	</div>
+	<div class="card-content">
+	  <h1 class="card-title"><%= @prize.name %></h1>
+	  <p class="card-text"><%= @prize.description %></p>
+	</div>
+      </section>
+    </div>
+  </body>
+</html>
