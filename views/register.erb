@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Register</title>
+    <title><%= @completed ? 'Completed' : 'Register' %></title>
     <script type="text/javascript">
       var registered_training_count = "<%= (@current_user.nil?) ? 'pushup' : @current_user.id %>";
       var registered_tv_program_id = <%= (@tv_program.nil?) ? 'null' : @tv_program.id %>;
@@ -13,7 +13,7 @@
     <%= erb :header %>
 
     <div class="container">
-      <h1>トレーニングの内容を設定してください。</h1>
+      <h1><%= @completed ? '設定が完了しました。' : 'トレーニングの内容を設定してください。' %></h1>
       <form action="/register" method="post">
 	<div>
 	  <div>

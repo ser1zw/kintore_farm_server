@@ -130,6 +130,8 @@ get '/register' do
   rescue => e
     ret = { success: false, message: e.message }.to_json
   end
+
+  @completed = false
   erb :register
 end
 
@@ -147,6 +149,8 @@ post '/register' do
   rescue => e
     pp e
   end
+
+  @completed = true
   erb :register
 end
 

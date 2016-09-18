@@ -23,7 +23,10 @@ body {
 .navbar-default .navbar-brand {
     color: #ffffff;
 }
-
+.header-small {
+    color: #000000;
+    font-size: smaller !important;
+}
 .training_count {
     font-size: 200px;
 }
