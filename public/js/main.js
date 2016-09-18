@@ -74,9 +74,25 @@ function getCount() {
 		var msg = "目標回数に到達しました。\n" + obtainedPoint +" ポイントが加算されます。"
 		    + "<a href=\"/prizes\">ポイント交換</a>";
 		document.getElementById("result_message").innerHTML = msg;
+		var pt = parseInt(document.getElementById("current_point").innerHTML) + obtainedPoint;
+		document.getElementById("current_point").innerHTML = pt;
 		clearInterval(intervalFunctionId);
+		addPoint(login_id, obtainedPoint);
 	    }
 	}
+    });
+}
+function addPoint(login_id, point) {
+    var login_id = "muscle808";
+    var json = { "login_id": login_id, "point": point };
+    $.ajax({
+	type: "POST",
+	url: "/point/add",
+	data: JSON.stringify(json)
+    }).done(function(msg) {
+	console.log(msg);
+	// var ret = JSON.parse(msg);
+	// location.href = '/register';
     });
 }
 

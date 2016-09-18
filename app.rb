@@ -75,7 +75,7 @@ get '/start/:login_id' do |login_id|
     @datetime = params['dt']
     @current_user = User.find_by(login_id: login_id)
     @target_count = @current_user.training_count
-    @obtained_point = 100
+    @obtained_point = 1
   rescue => e
     ret = { success: false, message: e.message }.to_json
   end
@@ -90,6 +90,20 @@ get '/count/:login_id/:datetime' do |login_id, datetime|
     ret = { success: true,
             count: c
           }.to_json
+  rescue => e
+    ret = { success: false, message: e.message }.to_json
+  end
+
+  ret
+end
+
+post '/point/add' do
+  begin
+    json = JSON.parse(request.body.read)
+    pp json
+    user = User.find_by(login_id: json['login_id'])
+    user.point += json['point'].to_i
+    user.save
   rescue => e
     ret = { success: false, message: e.message }.to_json
   end

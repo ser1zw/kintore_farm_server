@@ -7,7 +7,7 @@
       <ul class="nav navbar-nav">
 	<% if @current_user %>
 	  <li><a href="#"><%= @current_user.name %> さん</a></li>
-	  <li><a href="#">現在 <%= @current_user.point %> ポイント</a></li>
+	  <li><a href="#">現在 <span id="current_point"><%= @current_user.point %></span> ポイント</a></li>
 	<% end %>
       </ul>
     </div>
