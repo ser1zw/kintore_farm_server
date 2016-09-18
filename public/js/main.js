@@ -5,8 +5,13 @@ function init() {
 }
 function openTrainingPage() {
     var login_id = "muscle808";
-    var url = "/start/" + login_id + "?dt=" + getTimestamp()
+    var url = "/start/" + login_id + "?dt=" + getTimestamp();
     window.open(url, "_blank");
+}
+function goToTrainingPage() {
+    var login_id = "muscle808";
+    var url = "/start/" + login_id + "?dt=" + getTimestamp();
+    location.href = url;
 }
 
 function getPrize(prize_id) {
@@ -27,6 +32,27 @@ function getPrize(prize_id) {
 	    message = ret.message;
 	}
 	alert(message);
+    });
+}
+
+function reserveTvProgram(tv_program_id) {
+    var login_id = "muscle808";
+    var json = { "login_id": login_id, "tv_program_id": tv_program_id };
+    $.ajax({
+	type: "POST",
+	url: "/reservetvprogram",
+	data: JSON.stringify(json)
+    }).done(function(msg) {
+	console.log(msg)
+	var ret = JSON.parse(msg);
+	location.href = '/register'
+	// var message;
+	// if (ret.success) {
+	//     message = ret.message + "\n残り " + ret.user_point + " ポイント";
+	// } else {
+	//     message = ret.message;
+	// }
+	// alert(message);
     });
 }
 
@@ -71,4 +97,10 @@ function countUp() {
 	type: "POST",
 	url: "/countup/" + login_id + "?dt=" + datetime
     });
+}
+
+function initRegistrationPage(tvTitle) {
+    if (tvTitle) {
+	document.getElementById("registered_tv_program").innerHTML = tvTitle;
+    }
 }

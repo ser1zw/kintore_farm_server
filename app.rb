@@ -73,13 +73,12 @@ get '/start/:login_id' do |login_id|
   begin
     @login_id = login_id
     @datetime = params['dt']
-    @target_count = 10
+    @current_user = User.find_by(login_id: login_id)
+    @target_count = @current_user.training_count
     @obtained_point = 100
   rescue => e
     ret = { success: false, message: e.message }.to_json
   end
-
-  @current_user = User.find_by(login_id: login_id)
   erb :training
 end
 
@@ -109,6 +108,34 @@ get '/point/:login_id' do |login_id|
   ret
 end
 
+get '/register' do
+  ret = nil
+  begin
+    @current_user = User.find_by(login_id: DEMO_LOGIN_ID)
+    @tv_program = TvProgram.find(@current_user.tv_program_id)
+  rescue => e
+    ret = { success: false, message: e.message }.to_json
+  end
+  erb :register
+end
+
+post '/register' do
+  ret = nil
+  begin
+    @current_user = User.find_by(login_id: DEMO_LOGIN_ID)
+    @current_user.training_type = params['training_type']
+    @current_user.training_count = params['training_count']
+    @current_user.save
+    @tv_program = TvProgram.find(@current_user.tv_program_id)
+    #       t.string  "training_type"
+    # t.integer "training_count", default: 0
+    # t.integer "tv_program_id"
+  rescue => e
+    pp e
+  end
+  erb :register
+end
+
 get '/tvprograms' do
   ret = nil
   begin
@@ -120,6 +147,20 @@ get '/tvprograms' do
 
   @current_user = User.find_by(login_id: DEMO_LOGIN_ID)
   erb :tvprograms
+end
+
+post '/reservetvprogram' do
+  ret = nil
+  begin
+    json = JSON.parse(request.body.read)
+    user = User.find_by(login_id: DEMO_LOGIN_ID)
+    user.tv_program_id = json['tv_program_id']
+    user.save
+    ret = { success: true }.to_json
+  rescue => e
+    ret = { success: false, message: e.message }.to_json
+  end
+  ret
 end
 
 get '/prizes' do

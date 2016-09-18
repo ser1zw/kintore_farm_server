@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160917222520) do
+ActiveRecord::Schema.define(version: 20160918003023) do
 
   create_table "prizes", force: :cascade do |t|
     t.string  "name"
@@ -41,7 +41,10 @@ ActiveRecord::Schema.define(version: 20160917222520) do
     t.string  "login_id"
     t.string  "password"
     t.string  "name"
-    t.integer "point",    default: 0
+    t.integer "point",          default: 0
+    t.string  "training_type"
+    t.integer "training_count", default: 0
+    t.integer "tv_program_id"
     t.index ["login_id"], name: "index_users_on_login_id", unique: true
   end
 

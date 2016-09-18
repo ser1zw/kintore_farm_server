@@ -9,7 +9,7 @@
 
     <div class="container">
       <% @tv_programs.each do |tv| %>
-	<section id="prize-<%= tv.id %>" class="card" onclick="getPrize(<%= tv.id %>)">
+	<section id="tvprogram-<%= tv.id %>" class="card" onclick="reserveTvProgram(<%= tv.id %>)">
 	  <div style="text-align: center;">
 	    <img class="card-img" src="<%= tv.image_url %>">
 	  </div>

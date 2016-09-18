@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <script type="text/javascript">
+      var registered_training_count = "<%= (@current_user.nil?) ? 'pushup' : @current_user.id %>";
+      var registered_tv_program_id = <%= (@tv_program.nil?) ? 'null' : @tv_program.id %>;
+      var registered_tv_program_title = "<%= (@tv_program.nil?) ? nil : @tv_program.title %>";
+    </script>
+    <%= erb :common_js_css %>
+  </head>
+  <body onload="initRegistrationPage(registered_tv_program_title)">
+    <%= erb :header %>
+
+    <div class="container">
+      トレーニングの内容を設定します。
+      <form action="/register" method="post">
+	<div>
+	  <div>
+	    テレビ番組: <span id="registered_tv_program">未選択</span>
+	    <a href="/tvprograms">テレビ番組を選択</a>
+	  </div>
+
+	  メニュー: <select name="training_type">
+	    <option value="pushup" <%= ((@current_user and @current_user.training_type == 'pushup') ? 'selected' : '') %> >腕立て伏せ</option>
+	    <option value="shitup" <%= ((@current_user and @current_user.training_type == 'shitup') ? 'selected' : '') %>>腹筋</option>
+	    <option value="default_squat" <%= ((@current_user and @current_user.training_type == 'default_squat') ? 'selected' : '') %>>スクワット</option>
+	    <option value="squat" <%= ((@current_user and @current_user.training_type == 'squat') ? 'selected' : '') %>>ジャンピングスクワット</option>
+	  </select>
+	</div>
+	<div>
+	  回数: <select name="training_count">
+	    <option value="5" <%= ((@current_user and @current_user.training_count == 5) ? 'selected' : '') %>>5回</option>
+	    <option value="10" <%= ((@current_user and @current_user.training_count == 10) ? 'selected' : '') %>>10回</option>
+	    <option value="20" <%= ((@current_user and @current_user.training_count == 20) ? 'selected' : '') %>>20回</option>
+	    <option value="30" <%= ((@current_user and @current_user.training_count == 30) ? 'selected' : '') %>>30回</option>
+	  </select>
+	</div>
+	<input type="submit" value="設定">
+      </form>
+      <a href="#" onclick="goToTrainingPage()">トレーニングを始める</a>
+    </div>
+  </body>
+</html>
